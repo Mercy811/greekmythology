@@ -31,113 +31,45 @@ var svg = d3.select("#graph").append("svg")
 //My JSON note the 
 //no_parent: true this ensures that the node will not be linked to its parent
 //hidden: true ensures that the nodes is not visible.
-var root = {
-    name: "",
+var root = 
+{
+    name: "Chaos",
     id: 1,
-    hidden: true,
-    children: [ {
-            name: "Q",
-            id: 16,
-            no_parent: true
-        },{
-        name: "",
-        id: 2,
-        no_parent: true,
-        hidden: true,
-        children: [{
-            name: "J",
-            id: 12,
-
-        }, {
-            name: "L",
-            id: 13,
-            no_parent: true
-        }, {
-            name: "C",
-            id: 3
-        }, {
-            name: "",
-            id: 4,
-            hidden: true,
-            no_parent: true,
-            children: [{
-                name: "D",
-                id: 5,
-            }, {
-                name: "",
-                id: 14,
-                hidden: true,
-                no_parent: true,
-                children: [{
-                    name: "P",
-                    id: 15,
-                }]
-            }, {
-                name: "E",
-                id: 6,
-            }]
-        }, {
-            name: "K",
-            id: 11
-        }, {
-            name: "G",
-            id: 7,
-            children: [{
-                name: "H",
-                id: 8,
-            }, {
-                name: "I",
-                id: 9,
-            }]
-        }]
-    }, {
-        name: "M",
-        id: 10,
-        no_parent: true,
-        children: [
-
-        ]
-    }]
-}
-var allNodes = flatten(root);
-//This maps the siblings together mapping uses the ID using the blue line
-var siblings = [{
-    source: {
+    no_parent: true,
+    children: [
+    {
+        name: "Tartarus",
+        id: 2
+    },{
+        name: "Gaia",
         id: 3,
-        name: "C"
-    },
-    target: {
-        id: 11,
-        name: "K"
-    }
-}, {
-    source: {
-        id: 12,
-        name: "L"
-    },
-    target: {
-        id: 13,
-        name: "J"
-    }
-}, {
-    source: {
-        id: 5,
-        name: "D"
-    },
-    target: {
-        id: 6,
-        name: "E"
-    }
-}, {
-    source: {
-        id: 16,
-        name: "Q"
-    },
-    target: {
-        id: 10,
-        name: "M"
-    }
-}];
+        children: [
+        {
+            name: "The Nesoi",
+            id: 7,
+        },{
+            name: "Ourea",
+            id: 8
+        },{
+            name: "Pontus",
+            id: 9
+        },{
+            name: "Uranus",
+            id: 10
+        }]
+    },{
+        name: "Eros",
+        id: 4
+    },{
+        name:"Erebus",
+        id: 5
+    },{
+        name: "Nyx",
+        id: 6
+    }]
+};
+
+var allNodes = flatten(root);
 
 // Compute the layout.
 var tree = d3.layout.tree().size([width, height]),
@@ -156,12 +88,12 @@ var nodes = svg.selectAll(".node")
     .data(nodes)
     .enter();
 
-//First draw sibling line with blue line
-svg.selectAll(".sibling")
-    .data(siblings)
-    .enter().append("path")
-    .attr("class", "sibling")
-    .attr("d", sblingLine);
+// //First draw sibling line with blue line
+// svg.selectAll(".sibling")
+//     .data(siblings)
+//     .enter().append("path")
+//     .attr("class", "sibling")
+//     .attr("d", sblingLine);
 
 // Create the node rectangles.
 nodes.append("rect")
